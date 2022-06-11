@@ -14,8 +14,8 @@ class RegexManager {
     }
     
     let regexes:[PossibleRegexes:String] = [
-        .inTodayTomorrow : "[todaytomorrow] at [0-9]{0,1}[0-9]{0,1}.{0,1}[0-5]{0,1}[0-9]{0,1}[ ]*[ampm]",
-        .inNDays : "in [1-9]{1,2} day[s]* at [0-9]{0,1}[0-9]{0,1}.{0,1}[0-5]{0,1}[0-9]{0,1}[ ]*[ampm]",
+        .inTodayTomorrow : "[todaytomorrow] at [0-9]{0,1}[0-2]{0,1}.{0,1}[0-5]{0,1}[0-9]{0,1}[ ][ampm]",
+        .inNDays : "in [1-9]{1,2} day[s]* at [0-9]{0,1}[0-2]{0,1}.{0,1}[0-5]{0,1}[0-9]{0,1}[ ][ampm]",
         .inNMinutes : "in [1-9]{1,3} minute[s]*",
         .inNHours : "in [1-9]{1,3} hour[s]*"
     ]

@@ -42,7 +42,7 @@ class RegexManagerTests: XCTestCase {
 
     func test_DateEngine_validateReminderSection_allPhrasesAreWrong() {
         // Given
-        let wrongPhrases = ["tomorro at 8 pm",
+        let wrongPhrases = [
                             "tomorrow at 8.60 pm",
                             "in 4 days at 9.124 am",
                             "in",
