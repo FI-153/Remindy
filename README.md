@@ -1,5 +1,5 @@
-# MinimalReminderApp
+# Remindy
 ### A simple reminder App in the shape of menu bar App
 
-![153](https://github.com/FI-153/MinimalReminderApp/blob/d2fffcaae2fb8dd54161383b938666052dc9a8da/githubAssets/githubImage.png)
+![153](https://github.com/FI-153/Remindy/blob/12143376124cc59d84cfbbb8f0015f93bed3a74a/githubAssets/githubImage.png)
 > Made with ❤️ by: Imberti Federico
