@@ -123,56 +123,7 @@ class DateEngine {
 
         return (nameSection, reminderSection)
     }
-
-    ///          Format of a valid string
-    ///    ________________________________________
-    ///     today       |       |           |
-    ///                 |       |     n     |   am
-    ///     tomorrow    |   at  |           |
-    ///                 |       |   n.ab    |   pm
-    ///     in n days   |       |           |
-    ///    ----------------------------------------
-    ///                 |       |  minutes
-    ///         in      |   n   |
-    ///                 |       |   hours
-    func validateReminderSection(_ tokenizedPhrase: [String]) -> Bool {
-
-        let numOfWords = tokenizedPhrase.count
-
-        switch tokenizedPhrase[0] {
-
-        case "in":
-
-            guard numOfWords > 1 else { return false }
-            guard isValidNumberOfDays(tokenizedPhrase[1]) else { return false }
-
-            if numOfWords == 6 && (tokenizedPhrase[2] == "day" || tokenizedPhrase[2] == "days") {
-
-                guard tokenizedPhrase[3] == "at" else { return false }
-
-                return isTimeValid(for: tokenizedPhrase, statringFrom: 4)
-
-            } else if numOfWords == 3 && (tokenizedPhrase[2] == "minute" ||
-                                          tokenizedPhrase[2] == "minutes" ||
-                                          tokenizedPhrase[2] == "hour" ||
-                                          tokenizedPhrase[2] == "hours") {
-
-                return true
-            }
-
-        case "today", "tomorrow":
-
-            guard numOfWords == 4 else { return false }
-            guard tokenizedPhrase[1] == "at" else { return false }
-
-            return isTimeValid(for: tokenizedPhrase, statringFrom: 2)
-
-        default: return false
-        }
-
-        return false
-    }
-
+        
     func isAmPmValid(for string: String) -> Bool {
         string == "pm" || string == "am"
     }
@@ -194,7 +145,8 @@ class DateEngine {
 
     /// Determines if a phrase is remindable
     func isRemindable(_ phrase: String) -> Bool {
-        validate(phrase: phrase) && validateReminderSection(tokenize(getReminderSection(for: phrase), using: " "))
+        let regexManager = RegexManager()
+        return validate(phrase: phrase) && regexManager.validateReminderSection(phrase)
     }
 
     /// Validates the time, for example 12.34 AM or 12 PM

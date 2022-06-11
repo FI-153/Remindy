@@ -24,6 +24,8 @@
 		A190E3882854CF4E0044AAF3 /* MainViewManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190E3852854CF4E0044AAF3 /* MainViewManagerTests.swift */; };
 		A190E3892854CF4E0044AAF3 /* DateEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190E3862854CF4E0044AAF3 /* DateEngineTests.swift */; };
 		A190E38C2854CF8C0044AAF3 /* Remindy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A190E38A2854CF8C0044AAF3 /* Remindy.xcdatamodeld */; };
+		A1A347A328551E4C006F409E /* RegexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A347A228551E4C006F409E /* RegexManager.swift */; };
+		A1A347A528551FD9006F409E /* RegexManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A347A428551FD9006F409E /* RegexManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		A190E3852854CF4E0044AAF3 /* MainViewManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewManagerTests.swift; sourceTree = "<group>"; };
 		A190E3862854CF4E0044AAF3 /* DateEngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateEngineTests.swift; sourceTree = "<group>"; };
 		A190E38B2854CF8C0044AAF3 /* Remindy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remindy.xcdatamodel; sourceTree = "<group>"; };
+		A1A347A228551E4C006F409E /* RegexManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexManager.swift; sourceTree = "<group>"; };
+		A1A347A428551FD9006F409E /* RegexManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 				A190E3862854CF4E0044AAF3 /* DateEngineTests.swift */,
 				A190E3842854CF4E0044AAF3 /* ExtensionsTests.swift */,
 				A190E3852854CF4E0044AAF3 /* MainViewManagerTests.swift */,
+				A1A347A428551FD9006F409E /* RegexManagerTests.swift */,
 			);
 			path = RemindyTests;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 				A190E37A2854CEEE0044AAF3 /* DateEngine.swift */,
 				A190E3772854CEEE0044AAF3 /* NotificationManager.swift */,
 				A190E3782854CEEE0044AAF3 /* PersistanceManager.swift */,
+				A1A347A228551E4C006F409E /* RegexManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -292,6 +298,7 @@
 				A190E3762854CED90044AAF3 /* SettingsViewModel.swift in Sources */,
 				A190E33F2854CE0A0044AAF3 /* RemindyApp.swift in Sources */,
 				A190E3752854CED90044AAF3 /* SettingsView.swift in Sources */,
+				A1A347A328551E4C006F409E /* RegexManager.swift in Sources */,
 				A190E3712854CED10044AAF3 /* MainView.swift in Sources */,
 				A190E3802854CEFD0044AAF3 /* Extensions.swift in Sources */,
 				A190E3722854CED10044AAF3 /* MainViewModel.swift in Sources */,
@@ -308,6 +315,7 @@
 				A190E3872854CF4E0044AAF3 /* ExtensionsTests.swift in Sources */,
 				A190E3892854CF4E0044AAF3 /* DateEngineTests.swift in Sources */,
 				A190E3882854CF4E0044AAF3 /* MainViewManagerTests.swift in Sources */,
+				A1A347A528551FD9006F409E /* RegexManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
