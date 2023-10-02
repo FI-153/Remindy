@@ -12,7 +12,6 @@ struct MainView: View {
 
     @StateObject var vm = MainViewModel()
 
-    let notificationManager = NotificationManager.getShared()
     @State var isSettingViewOpened: Bool = false
 
     @EnvironmentObject var colorManager: ColorManager
@@ -21,15 +20,10 @@ struct MainView: View {
 
         ZStack {
             VStack(alignment: .leading) {
-
                 inputSection
-
                 Divider()
-
                 scrollViewSection
-
                 Spacer()
-
                 HStack {
                     quitButton
                     Spacer()
@@ -42,7 +36,7 @@ struct MainView: View {
             .disabled(isSettingViewOpened)
 
             SettingsView(isSettingViewOpened: $isSettingViewOpened)
-                .animation(.spring(), value: isSettingViewOpened)
+                .animation(.bouncy(duration:0.4), value: isSettingViewOpened)
                 .offset(y: isSettingViewOpened ? 0 : 500)
         }
 
@@ -51,7 +45,7 @@ struct MainView: View {
 
 extension MainView {
     private var inputSection: some View {
-        TextField("Type something to remember...", text: $vm.newItemName)
+        TextField("Type Something To Remember...", text: $vm.newItemName)
             .textFieldStyle(.plain)
             .onSubmit {
                 vm.addItem(named: vm.newItemName)
@@ -76,7 +70,7 @@ extension MainView {
             exit(0)
         } label: {
             Label {
-                Text("Quit app")
+                Text("Quit")
                     .font(.system(size: 12, weight: .semibold))
             } icon: {
                 Image(systemName: "power")
@@ -105,15 +99,6 @@ extension MainView {
 struct ContentView_Previews_dark: PreviewProvider {
     static var previews: some View {
         MainView(isSettingViewOpened: false)
-            .preferredColorScheme(.dark)
-            .environmentObject(ColorManager())
-    }
-}
-
-struct ContentView_Previews_light: PreviewProvider {
-    static var previews: some View {
-        MainView(isSettingViewOpened: false)
-            .preferredColorScheme(.light)
             .environmentObject(ColorManager())
     }
 }
