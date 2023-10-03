@@ -30,16 +30,17 @@ class MainViewModel: ObservableObject {
     }
 
     func subscribeToFetchedObjects() {
-        persistanceManager.$fetchedItems.sink { [weak self] items in
-            guard let self = self else { return }
-
-            self.fetchedItems = items
-        }
-        .store(in: &cacellables)
+        persistanceManager
+            .$fetchedItems
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] items in
+                guard let self = self else { return }
+                self.fetchedItems = items
+            }
+            .store(in: &cacellables)
     }
 
     func addItem(named name: String) {
-
         if !name.isEmpty {
             persistanceManager.createItem(named: name)
             saveModifications()
