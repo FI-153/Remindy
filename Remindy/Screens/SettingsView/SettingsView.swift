@@ -20,15 +20,16 @@ struct SettingsView: View {
         VStack(spacing: 20) {
 
             sampleReminderSection
-
+            
+            dividerView
+            
             HStack(spacing: 30) {
                 circleColorSection
                 reminderColorSection
             }
 
-            Divider()
-                .frame(width: 400)
-
+            dividerView
+            
             HStack {
                 resetColorSection
                 clearReminderSection
@@ -60,11 +61,10 @@ extension SettingsView {
     private var sampleReminderSection: some View {
         ZStack{
             VStack {
-                CellView(item: vm.item)
-                Divider()
+                CellView(item: vm.sampleItem)
             }
             
-            //Used to disable the textfiled without changing its colors with .disabled()
+            //Used to disable the textfiled without changing its colors with .disabled(true)
             Rectangle().fill(Color.primary.opacity(0.001))
         }
         .frame(width: 400, height: 40)
@@ -77,12 +77,13 @@ extension SettingsView {
                 .font(.title2)
 
             HStack {
-
                 ForEach(colorManager.availableCircleColor, id: \.self) { color in
                     Button {
                         colorManager.setCircleColor(to: color)
                     } label: {
-                        Image(systemName: color == colorManager.circleColor ? "largecircle.fill.circle" : "circle.fill")
+                        Image(systemName: color == colorManager.circleColor 
+                              ? "largecircle.fill.circle"
+                              : "circle.fill")
                             .foregroundColor(color)
                     }
                 }
@@ -103,8 +104,8 @@ extension SettingsView {
                     Button {
                         colorManager.setReminderColor(to: color)
                     } label: {
-                        Image(systemName: color == colorManager.reminderColor ?
-                              "largecircle.fill.circle"
+                        Image(systemName: color == colorManager.reminderColor
+                              ?"largecircle.fill.circle"
                               : "circle.fill")
                             .foregroundColor(color)
                     }
@@ -147,10 +148,15 @@ extension SettingsView {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25, height: 25)
-                .opacity(0.8)
+                .opacity(0.6)
                 .padding()
         }
         .buttonStyle(.plain)
+    }
+    
+    private var dividerView: some View{
+        Divider()
+            .frame(width: 400)
     }
 
 }

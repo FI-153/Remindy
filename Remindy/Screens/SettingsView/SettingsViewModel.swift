@@ -8,16 +8,16 @@
 import SwiftUI
 
 class SettingsViewModel: ObservableObject {
-    @Published var item = Item(context: PersistanceManager.getShared().childContext)
+    @Published var sampleItem = Item(context: PersistanceManager.getShared().childContext)
     @Binding var isSettingViewOpened: Bool
     let persistanceManager = PersistanceManager.getShared()
 
     init(isSettingViewOpened: Binding<Bool>) {
         self._isSettingViewOpened = isSettingViewOpened
 
-        item.name = "Pet the dog, today at 8 pm"
-        item.isRemindable = true
-        item.isReminded = true
+        sampleItem.name = "Pet the dog, today at 8 pm"
+        sampleItem.isRemindable = true
+        sampleItem.isReminded = true
     }
 }
 
