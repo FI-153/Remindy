@@ -22,14 +22,16 @@ class ColorManager: ObservableObject {
     let availableReminderColor: [Color] = [.yellow, .green, .cyan, .accentColor]
     let availableCircleColor: [Color] = [.primary, .teal.opacity(0.8), .brown, .gray]
 
+    let defaultReminderColor:Color = .yellow
+    let defaultCircleColor:Color = .primary
     init() {
-        reminderColor = Color.getFromMemory(named: "reminderColor") ?? .yellow
-        circleColor = Color.getFromMemory(named: "circleColor") ?? .primary
+        reminderColor = Color.getFromMemory(named: "reminderColor") ?? defaultReminderColor
+        circleColor = Color.getFromMemory(named: "circleColor") ?? defaultCircleColor
     }
 
     func resetColors() {
-        reminderColor = .yellow
-        circleColor = .primary
+        reminderColor = defaultReminderColor
+        circleColor = defaultCircleColor
     }
 
     func setReminderColor(to color: Color) {
