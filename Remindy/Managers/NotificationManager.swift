@@ -10,8 +10,7 @@ class NotificationManager {
     /// Requests the authorization to display notifications
     func requestAuthorization() {
       UNUserNotificationCenter.current()
-        .requestAuthorization(options: [.alert, .sound, .badge]) { _, _  in
-        }
+        .requestAuthorization(options: [.alert, .sound, .badge]) { _, _  in}
     }
 
     /// Adds a notification with a time interval
@@ -42,16 +41,19 @@ class NotificationManager {
         reminderContent.title = item.name ?? ""
         reminderContent.sound = .default
 
-        let reminderTrigger = UNCalendarNotificationTrigger(dateMatching:
-                                                                Calendar.current.dateComponents(
-                                                                    [.day, .month, .year, .hour, .minute, .second],
-                                                                    from: givenDate),
-                                                            repeats: false)
+        let reminderTrigger = UNCalendarNotificationTrigger(
+            dateMatching: Calendar
+                .current
+                .dateComponents([.day, .month, .year, .hour, .minute, .second],
+                                from: givenDate),
+            repeats: false
+        )
 
         let request = UNNotificationRequest(
             identifier: item.name ?? "",
             content: reminderContent,
-            trigger: reminderTrigger)
+            trigger: reminderTrigger
+        )
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error { print(error.localizedDescription) }
@@ -60,8 +62,11 @@ class NotificationManager {
 
     /// Removes the notification for an item
     func removeNotification(for item: Item) {
-        UNUserNotificationCenter.current()
-            .removePendingNotificationRequests(withIdentifiers: [(item.id ?? UUID()).uuidString])
+        UNUserNotificationCenter
+            .current()
+            .removePendingNotificationRequests(
+                withIdentifiers: [(item.id ?? UUID()).uuidString]
+            )
     }
 
 }
