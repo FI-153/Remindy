@@ -15,7 +15,7 @@ class PersistanceManager {
 
     let container: NSPersistentContainer
     var containerContext: NSManagedObjectContext {
-        return container.viewContext
+        container.viewContext
     }
 
     /// Child context of the main context, to be used for the example item in the SettingsView
@@ -51,7 +51,7 @@ class PersistanceManager {
             try containerContext.save()
             refreshFetchedItems()
         } catch {
-            print("No Able to save: \(error)")
+            print("Not able to save: \(error)")
         }
     }
 
