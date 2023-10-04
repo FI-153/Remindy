@@ -22,17 +22,18 @@ class RegexManager {
     
     let options:NSRegularExpression.Options = [.caseInsensitive]
     
-    ///          Format of a valid string
-    ///    ________________________________________
-    ///     today       |       |           |
-    ///                 |       |     n     |   am
-    ///     tomorrow    |   at  |           |
-    ///                 |       |   n.ab    |   pm
-    ///     in n days   |       |           |
-    ///    ----------------------------------------
-    ///                 |       |  minutes
-    ///         in      |   n   |
-    ///                 |       |   hours
+    ///           Format of a valid string
+    ///    _________________________________________
+    ///     today       |        |           |
+    ///                 |        |   n       |  am
+    ///     tomorrow    |   at   |           |
+    ///                 |        |   n.ab    |  pm
+    ///     in n days   |        |           |
+    ///    -----------------------------------------
+    ///                 |        |  minutes  |
+    ///     in          |   n    |           |
+    ///                 |        |  hours    |
+    ///    -----------------------------------------
     func validateReminderSection(_ string: String) -> Bool {
         
         for regex in regexes {
