@@ -9,65 +9,58 @@ import Foundation
 
 class DateEngine {
 
-    /// Tokenizes a phrase using a given separator
+    /**
+     - Returns: the tokenized phrase as an arrays of its String components lowercased
+     */
     func tokenize(_ phrase: String, using separator: String) -> [String] {
         phrase.components(separatedBy: separator).map({$0.lowercased()})
     }
 
-    /// Finds the first word with a comma
-    func findWordWithComma(in tokenizedPhrase: [String]) -> String? {
-        tokenizedPhrase.first(where: { string in
-            string.hasSuffix(",")
-        })
-    }
-
-    /// Gives the index of the word with a comma
+    /// Finds the index of the word with a comma
+    /// - Returns: The index of the first word suffixed with a comma if found
     func findIndexOfWordWithComma(of tokenizedPhrase: [String]) -> Int? {
 
         var index: Int?
-        let mainToken = findWordWithComma(in: tokenizedPhrase)
-
+        
         for currentIndex in tokenizedPhrase.indices {
-            if tokenizedPhrase[currentIndex] == mainToken {
-
+            if tokenizedPhrase[currentIndex].hasSuffix(",") {
                 index = currentIndex
                 break
             }
         }
-
+        
         return index
     }
-
-    func getTimeAndAmpm(from tokenizedPhrase: [String], strartingFrom index: Int) -> (String, String) {
-        let time = tokenizedPhrase[index]
-        let amPm = tokenizedPhrase[index+1]
-
-        return (time, amPm)
+    /// - Returns: The value related to the time int the tokenized phrase and if it is Am or Pm
+    func getTimeAndAmpm(from tokenizedPhrase: [String], strartingFrom index: Int) -> (time:String, amPm:String) {
+        return (tokenizedPhrase[index], tokenizedPhrase[index+1])
     }
 
+    /// - Returns: The time adjusted in a 24h format
     func getHour(from tokenizedTime: [String], and amPm: String) -> Int {
 
         var adjustedTime = 0
 
         if
-            let firstItem = tokenizedTime.first,
-            let baseTime = Int(firstItem) {
-
-            adjustedTime =  baseTime + ( amPm.lowercased() == "pm" ? 12 : 0)
+            let hour = tokenizedTime.first,
+            let baseTime = Int(hour) 
+        {
+            adjustedTime =  baseTime + (amPm.lowercased() == "pm" ? 12 : 0)
         }
 
         return adjustedTime
     }
 
+    /// - Returns: The minutes in the tkenized string, if present
     func getMinute(from tokenizedTime: [String]) -> Int {
         if
             tokenizedTime.count == 2,
-            let minute = Int(tokenizedTime[1]) {
-
+            let minute = Int(tokenizedTime[1])
+        {
             return minute
-        } else {
-            return 0
         }
+            
+        return 0
     }
 
     /// Gets day, month and year of today
