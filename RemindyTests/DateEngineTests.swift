@@ -32,17 +32,6 @@ class DateEngineTests: XCTestCase {
         XCTAssertEqual(exprectedTokenizedPhrase, tokenizedPhrase)
     }
 
-    func test_DateEngine_findWordWithComma_theWordWithCommaIsFound() {
-        // Given
-        let tokenizedPhrase = ["hello,", "how", "are", "you?"]
-
-        // When
-        let wordWithComam = dateEngine.findWordWithComma(in: tokenizedPhrase)
-
-        // Then
-        XCTAssertEqual(wordWithComam, "hello,")
-    }
-
     func test_DateEngine_findIndexOfWordWithComma_theFirstIndexOfTheArrayIsGiven() {
         // Given
         let tokenizedPhrase = ["hello,", "how", "are", "you?"]
@@ -295,7 +284,7 @@ class DateEngineTests: XCTestCase {
         for phrase in correctPhrases {
 
             // When
-            let isPhraseCorrect = dateEngine.validate(phrase: phrase)
+            let isPhraseCorrect = dateEngine.validate(phrase)
 
             // Then
             XCTAssertTrue(isPhraseCorrect)
@@ -310,7 +299,7 @@ class DateEngineTests: XCTestCase {
         for phrase in wrongPhrases {
 
             // When
-            let isPhraseCorrect = dateEngine.validate(phrase: phrase)
+            let isPhraseCorrect = dateEngine.validate(phrase)
 
             // Then
             XCTAssertFalse(isPhraseCorrect)
@@ -363,7 +352,7 @@ class DateEngineTests: XCTestCase {
         for phrase in wrongPhrases {
 
             // When
-            let isPhraseCorrect = dateEngine.validate(phrase: phrase)
+            let isPhraseCorrect = dateEngine.validate(phrase)
 
             // Then
             XCTAssertFalse(isPhraseCorrect)

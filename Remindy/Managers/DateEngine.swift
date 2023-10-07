@@ -8,6 +8,8 @@
 import Foundation
 
 class DateEngine {
+    
+    let regexManager = RegexManager()
 
     /**
      - Returns: the tokenized phrase as an arrays of its String components lowercased
@@ -63,115 +65,118 @@ class DateEngine {
         return 0
     }
 
-    /// Gets day, month and year of today
+    /// - Returns: Day, Month, Year, Hour and Minute of today, increased by the given amount
     func getTodaysComponents(increasedBy units: String, of option: increasingOptions) -> DateComponents {
+        let components:Set<Calendar.Component> = [.day, .month, .year, .hour, .minute]
+        
         switch option {
         case .days:
-            return Calendar.current
-                .dateComponents([.day, .month, .year, .hour, .minute],
-                                from: Date.now.increasedBy(days: units)
-                )
+            return Calendar
+                .current
+                .dateComponents(components, from: Date.now.increasedBy(days: units))
         case .minutes:
-            return Calendar.current
-                .dateComponents([.day, .month, .year, .hour, .minute],
-                                from: Date.now.increasedBy(minutes: units)
-                )
+            return Calendar
+                .current
+                .dateComponents(components, from: Date.now.increasedBy(minutes: units))
         case .hours:
-            return  Calendar.current
-                .dateComponents([.day, .month, .year, .hour, .minute],
-                                from: Date.now.increasedBy(hours: units)
-                )
+            return  Calendar
+                .current
+                .dateComponents(components, from: Date.now.increasedBy(hours: units))
         }
     }
 
     /// Validates a phrase
-    func validate(phrase: String) -> Bool {
+    /// - Returns: True if the string contains a comma
+    func validate(_ phrase: String) -> Bool {
         phrase.contains(", ")
     }
 
-    /// Gets the reminder section, which is the one after the comma
+    /// - Returns: the reminder section, which is the one after the comma
     func getReminderSection(for phrase: String) -> String {
 
         let splittedPhrase = phrase.split(separator: ",")
         var interestedPart = String(splittedPhrase[1])
 
-        // removes the first space
-        if let index = interestedPart.firstIndex(of: " ") {
+        // removes the first space after the comma
+        if
+            let index = interestedPart.firstIndex(of: " ")
+        {
             interestedPart.remove(at: index)
         }
 
         return interestedPart
     }
 
-    /// Gets the name section, which is the one before the comma
+    /// - Returns: The name section, which is the one before the comma
     func getNameSection(for phrase: String) -> String {
         let splittedPhrase = phrase.split(separator: ",")
         return String(splittedPhrase[0])
     }
 
     /// Splits the given phrase in the name and remidner sections
-    func splitInSections(_ phrase: String) -> (String, String) {
-        let nameSection = getNameSection(for: phrase)
-        let reminderSection = getReminderSection(for: phrase)
-
-        return (nameSection, reminderSection)
+    /// - Returns: The left side of the comma as `name` and the right side as `reminder`
+    func splitInSections(_ phrase: String) -> (name: String, reminder: String) {
+        return (getNameSection(for: phrase), getReminderSection(for: phrase))
     }
         
     func isAmPmValid(for string: String) -> Bool {
         string == "pm" || string == "am"
     }
 
+    /// - Returns: True if the hour is within 0 and 12 and the minutes are between 0 and 59
     func isWithinTimeBoundairesForTwoDigits(_ twoDigitsTokenizedTime: [String]) -> Bool {
         Int(twoDigitsTokenizedTime[0]) ?? -1 >= 0 &&
         Int(twoDigitsTokenizedTime[0]) ?? 13 <= 12 &&
         Int(twoDigitsTokenizedTime[1]) ?? 60 <= 59 &&
         Int(twoDigitsTokenizedTime[1]) ?? -1 >= 0
     }
-
+    
+    /// - Returns: True if the hour is within 0 and 12
     func isWithinTimeBoundairesForOneDigit(_ oneDigitTokenizedTime: [String]) -> Bool {
         Int(oneDigitTokenizedTime[0]) ?? -1 >= 0 && Int(oneDigitTokenizedTime[0]) ?? 13 <= 12
     }
 
+    /// - Returns: True if the array has 2 values, meaning if the user gave both hours and minutes
     func tokenizedTimeHasTwoDigits(_ tokenizedTime: [String]) -> Bool {
         tokenizedTime.count == 2
     }
 
     /// Determines if a phrase is remindable
+    /// - Returns: True if the phrase is remindable, otherwise false
     func isRemindable(_ phrase: String) -> Bool {
-        let regexManager = RegexManager()
-        return validate(phrase: phrase) && regexManager.validateReminderSection(phrase)
+        return validate(phrase) && regexManager.validateReminderSection(phrase)
     }
 
-    /// Validates the time, for example 12.34 AM or 12 PM
+    /// Validates the time
+    /// - Returns: True if the given time is present and formatted correctly, for example 12.34 AM or 12 PM
     func isTimeValid(for tokenizedPhrase: [String], statringFrom index: Int) -> Bool {
         let tokenizedTime = tokenize(tokenizedPhrase[index], using: ".")
 
+        guard isAmPmValid(for: tokenizedPhrase[index+1]) else { return false }
+
         if tokenizedTimeHasTwoDigits(tokenizedTime) {
-
             guard isWithinTimeBoundairesForTwoDigits(tokenizedTime) else { return false }
-            guard isAmPmValid(for: tokenizedPhrase[index+1]) else { return false }
             return true
-
         } else {
-
             guard isWithinTimeBoundairesForOneDigit(tokenizedTime) else { return false }
-            guard isAmPmValid(for: tokenizedPhrase[index+1]) else { return false }
             return true
-
         }
     }
 
+    /// - Returns: True if the number of days is grater of equal to 0, otherwise false
     func isValidNumberOfDays(_ string: String) -> Bool {
         return (Int(string) ?? -1) >= 0
     }
 
-    /// Given a remindable string it produces a Date? from it
+    /// Given a remindable string it produces a Date from it, when possible
+    /// - Returns: The parsed string to a Date? object otherwise a nil
     func getDateFromString(_ phrase: String) -> Date? {
 
         let tokenizedPhrase = tokenize(phrase, using: " ")
         let firstIndex = findIndexOfWordWithComma(of: tokenizedPhrase)
 
         guard let firstIndex = firstIndex else {
+            //The phrase is not remindable
             return nil
         }
 
@@ -223,7 +228,8 @@ class DateEngine {
 
         return Calendar.current.date(from: components)
     }
-
+    
+    /// Gives the possible units of measurement o increase the date
     enum increasingOptions: CustomStringConvertible {
         case days, minutes, hours
 
