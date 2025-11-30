@@ -161,10 +161,8 @@ extension SettingsView {
 
 }
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView(isSettingViewOpened: .constant(false))
-            .frame(minWidth: 500, idealWidth: 500, minHeight: 400)
-            .environmentObject(ColorManager())
-    }
+#Preview("Settings View"){
+    SettingsView(isSettingViewOpened: .constant(false))
+        .frame(minWidth: 500, idealWidth: 500, minHeight: 400)
+        .environmentObject(ColorManager())
 }

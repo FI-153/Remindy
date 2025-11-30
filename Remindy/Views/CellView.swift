@@ -98,34 +98,29 @@ extension CellView {
     }
 }
 
-#if DEBUG
-struct CellView_Previews1: PreviewProvider {
-    static var previews: some View {
-        let item = Item(context: PersistanceManager.getShared().containerContext)
-        item.name = "Reminder title"
-
-        return CellView(item: item)
-    }
+#Preview("Normal Reminder") {
+    let item = Item(context: PersistanceManager.getShared().containerContext)
+    item.name = "Reminder title"
+    
+    return CellView(item: item)
+        .environmentObject(ColorManager())
 }
 
-struct CellView_Previews2: PreviewProvider {
-    static var previews: some View {
-        let item = Item(context: PersistanceManager.getShared().containerContext)
-        item.name = "Remindable reminder title"
-        item.isRemindable = true
-
-        return CellView(item: item)
-    }
+#Preview("Remindable Reminder"){
+    let item = Item(context: PersistanceManager.getShared().containerContext)
+    item.name = "Reminder title, at 12 am"
+    item.isRemindable = true
+    
+    return CellView(item: item)
+        .environmentObject(ColorManager())
 }
 
-struct CellView_Previews3: PreviewProvider {
-    static var previews: some View {
-        let item = Item(context: PersistanceManager.getShared().containerContext)
-        item.name = "Reminded reminder title"
-        item.isRemindable = true
-        item.isReminded = true
-
-        return CellView(item: item)
-    }
+#Preview("Normal Reminder with Notification"){
+    let item = Item(context: PersistanceManager.getShared().containerContext)
+    item.name = "Reminder title, at 12 am"
+    item.isRemindable = true
+    item.isReminded = true
+    
+    return CellView(item: item)
+        .environmentObject(ColorManager())
 }
-#endif
