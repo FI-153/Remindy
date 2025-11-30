@@ -42,11 +42,11 @@ for this item. Reminders with the bell icon on the right can be used to trigger 
 ### Notification Status
 When the bell and the date are not colored then there is no notification for the corresponding item
 
-![Remindable Reminder](https.com/user-attachments/assets/3ba83ad2-89be-4e77-86cf-b612d5ee5a2a)
+![Remindable Reminder](https://github.com/FI-153/Remindy/blob/d0b07ff6c97ee7b4fc776b4c84a32813de5e987b/githubAssets/Remindable%20Reminder.png)
 
 Otherwise a notification will be delivered at the specified time
 
-![Normal Reminder with Notification](https://github.com/user-attachments/assets/9209ccaa-a807-4d16-a2a5-b666b6636421)
+![Normal Reminder with Notification](https://github.com/FI-153/Remindy/blob/d0b07ff6c97ee7b4fc776b4c84a32813de5e987b/githubAssets/Normal%20Reminder%20with%20Notification.png)
 
 ### Writing a reminder
 The structure of new entry is divided in three parts as follows:
@@ -72,7 +72,7 @@ To clear a reminder you can tap on the circle on the left of the title.
 ### Settings
 From the settings screen you can customize the appearance of the app and clear all the reminders.
 
-![Settings View](https://github.com/user-attachments/assets/2ef58efe-47f3-4774-a424-283b386d20ac)
+![Settings View](https://github.com/FI-153/Remindy/blob/d0b07ff6c97ee7b4fc776b4c84a32813de5e987b/githubAssets/Settings%20View.png)
 
 
 ## 🛠️ Contributing
