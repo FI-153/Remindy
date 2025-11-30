@@ -77,6 +77,30 @@ class DateEngineTests: XCTestCase {
         XCTAssertEqual(time, "8.12")
         XCTAssertEqual(amPm, "pm")
     }
+    
+    func test_DateEngine_getTimeAndAmpm_ampmAttachedToTimeWithMinutes() {
+        // Given
+        let tokenizedPhrase = ["today", "at", "8.12pm"]
+
+        // When
+        let (time, amPm) = dateEngine.getTimeAndAmpm(from: tokenizedPhrase, strartingFrom: 2)
+
+        // Then
+        XCTAssertEqual(time, "8.12")
+        XCTAssertEqual(amPm, "pm")
+    }
+    
+    func test_DateEngine_getTimeAndAmpm_ampmAttachedToTimeWithoutMinute() {
+        // Given
+        let tokenizedPhrase = ["today", "at", "8am"]
+
+        // When
+        let (time, amPm) = dateEngine.getTimeAndAmpm(from: tokenizedPhrase, strartingFrom: 2)
+
+        // Then
+        XCTAssertEqual(time, "8")
+        XCTAssertEqual(amPm, "am")
+    }
 
     func test_DateEngine_getHour_theCorrectHourIsDetected_am() {
         // Given

@@ -35,7 +35,22 @@ class DateEngine {
     }
     /// - Returns: The value related to the time int the tokenized phrase and if it is Am or Pm
     func getTimeAndAmpm(from tokenizedPhrase: [String], strartingFrom index: Int) -> (time:String, amPm:String) {
-        return (tokenizedPhrase[index], tokenizedPhrase[index+1])
+        
+        if tokenizedPhrase.count-1 == index {
+            //1am or 1pm
+            
+            let time = String(tokenizedPhrase[index].dropLast(2))
+            
+            if tokenizedPhrase[index].lowercased().hasSuffix("am") {
+                return(time, "am")
+            } else {
+                return(time, "pm")
+            }
+            
+        } else {
+            //1 am or 1 pm
+            return (tokenizedPhrase[index], tokenizedPhrase[index+1])
+        }
     }
 
     /// - Returns: The time adjusted in a 24h format
