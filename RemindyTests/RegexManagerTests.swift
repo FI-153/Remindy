@@ -30,7 +30,8 @@ class RegexManagerTests: XCTestCase {
                               "in 3 days at 8.59 pm",
                               "in 1 minute",
                               "in 3 minutes",
-                              "in 3 hours"]
+                              "in 3 hours",
+                              "in 3 days at 8.59 PM"]
 
         for phrase in correctPhrases {
             // When

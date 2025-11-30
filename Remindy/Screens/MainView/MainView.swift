@@ -29,7 +29,10 @@ struct MainView: View {
                     Spacer()
                     settingsButton
                 }
-                .background(colorManager.reminderColor.opacity(0.1))
+                .background(
+                    LinearGradient(colors: [colorManager.reminderColor.opacity(0.1), Color.clear], startPoint: .bottom, endPoint: .top)
+                        .blur(radius: 10)
+                )
 
             }
             .blur(radius: isSettingViewOpened ? 3 : 0)
@@ -71,10 +74,10 @@ extension MainView {
         } label: {
             Label {
                 Text("Quit")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: 13, weight: .semibold))
             } icon: {
                 Image(systemName: "power")
-                    .font(.system(size: 12, weight: .bold))
+                    .font(.system(size: 15, weight: .bold))
             }
         }
         .buttonStyle(.plain)
@@ -95,12 +98,14 @@ extension MainView {
     }
 }
 
-#if DEBUG
-struct ContentView_Previews_dark: PreviewProvider {
-    static var previews: some View {
-        MainView(isSettingViewOpened: false)
-            .environmentObject(ColorManager())
-    }
+#Preview {
+    MainView(isSettingViewOpened: false)
+        .environmentObject(ColorManager())
+        .preferredColorScheme(.dark)
 }
 
-#endif
+#Preview {
+    MainView(isSettingViewOpened: false)
+        .environmentObject(ColorManager())
+        .preferredColorScheme(.light)
+}
