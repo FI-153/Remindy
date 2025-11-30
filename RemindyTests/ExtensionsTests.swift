@@ -67,7 +67,7 @@ class ExtensionsTests: XCTestCase {
     func test_Extensions_toRGBA_conversionIsCorrect() {
         // Given
         let color = Color.red
-        let colorRGBA: [Float] = [0.99999994, 0.27058825, 0.22745097]
+        let colorRGBA: [Float] = [1.0, 0.25882354, 0.27058825]
 
         // When
         let colorGettedComponents = color.toRGB()

@@ -26,6 +26,7 @@ class RegexManagerTests: XCTestCase {
                               "tomorrow at 8.59 pm",
                               "today at 8 pm",
                               "in 3 days at 8.12 am",
+                              "in 3 days at 8.12am",
                               "in 3 days at 8.59 pm",
                               "in 1 minute",
                               "in 3 minutes",

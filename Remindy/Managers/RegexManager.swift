@@ -13,26 +13,33 @@ class RegexManager {
         case inTodayTomorrow, inNDays, inNMinutes, inNHours
     }
     
-    let regexes:[PossibleRegexes:String] = [
-        .inTodayTomorrow : "[todaytomorrow] at [0-9]{0,1}[0-2]{0,1}.{0,1}[0-5]{0,1}[0-9]{0,1}[ ][ampm]",
-        .inNDays : "in [1-9]{1,2} day[s]* at [0-9]{0,1}[0-2]{0,1}.{0,1}[0-5]{0,1}[0-9]{0,1}[ ][ampm]",
-        .inNMinutes : "in [1-9]{1,3} minute[s]*",
-        .inNHours : "in [1-9]{1,3} hour[s]*"
+    let regexes: [PossibleRegexes: String] = [
+        // Matches "today/tomorrow", optional minutes (e.g. 5.30 or just 5), optional space before am/pm
+        .inTodayTomorrow: "(today|tomorrow) at (1[0-2]|0?[1-9])((.|:)[0-5][0-9])? ?(am|pm)",
+        
+        // Matches "in 1 day" or "in 12 days", same time logic as above
+        .inNDays: "in [1-9][0-9]? days? at (1[0-2]|0?[1-9])((.|:)[0-5][0-9])? ?(am|pm)",
+        
+        // Matches "in 5 minutes", "in 120 minutes" (1-3 digits)
+        .inNMinutes: "in [1-9][0-9]{0,2} minutes?",
+        
+        // Matches "in 1 hour", "in 12 hours"
+        .inNHours: "in [1-9][0-9]{0,2} hours?"
     ]
     
     let options:NSRegularExpression.Options = [.caseInsensitive]
     
     ///           Format of a valid string
     ///    _________________________________________
-    ///     today       |        |           |
-    ///                 |        |   n       |  am
+    ///     today          |         |           |
+    ///                  |           |   n           |  am
     ///     tomorrow    |   at   |           |
-    ///                 |        |   n.ab    |  pm
-    ///     in n days   |        |           |
+    ///                  |           |   n.ab      |  pm
+    ///     in n days    |          |           |
     ///    -----------------------------------------
-    ///                 |        |  minutes  |
-    ///     in          |   n    |           |
-    ///                 |        |  hours    |
+    ///                  |           |  minutes  |
+    ///     in                |   n    |           |
+    ///                  |           |  hours      |
     ///    -----------------------------------------
     func validateReminderSection(_ string: String) -> Bool {
         

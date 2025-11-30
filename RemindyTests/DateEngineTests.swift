@@ -310,8 +310,11 @@ class DateEngineTests: XCTestCase {
         // Given
         let correctPhrases = ["Bring out the trash, tomorrow at 8 pm",
                               "Bring out the trash, today at 8 pm",
+                              "Bring out the trash, today at 8pm",
                               "Bring out the trash, in 3 days at 8.12 am",
+                              "Bring out the trash, in 3 days at 8:12 am",
                               "Bring out the trash, in 3 days at 8.59 pm",
+                              "Bring out the trash, in 3 days at 8:59pm",
                               "Bring out the trash, in 3 hours",
                               "Bring out the trash, in 3 minutes"]
 
@@ -327,14 +330,14 @@ class DateEngineTests: XCTestCase {
 
     func test_DateEngine_isRemindalbe_thesePhrasesAreNotRemindable() {
         // Given
-        let correctPhrases = ["Bring out the trash, tomorrow at8 pm",
-                              "Bring out the trash, today at 8pm",
-                              "Bring out the trash, in 3 days 8.12 am",
+        let wrongPhrases = ["Bring out the trash, tomorrow at8 pm",
+                              "Bring out the trash, today at8pm",
+                              "Bring out the trash in 3 days 8.12 am",
                               "Bring out the trash, in 3days at 8.59 pm",
                               "Bring out the trash, in 3 hou",
                               "Bring out the trash, in 3minutes"]
 
-        for phrase in correctPhrases {
+        for phrase in wrongPhrases {
 
             // When
             let isPhraseRemindable = dateEngine.isRemindable(phrase)
