@@ -1,13 +1,13 @@
 # Remindy
-A fast and miminalist reminder app that interprets what you want, directly in the Menu Bar
+A fast and minimalist reminder app that interprets what you want, directly in the Menu Bar
 
 ![153](https://github.com/FI-153/Remindy/blob/f4f0ada0f5525ea54d3123fd1db1de24f41428fd/githubAssets/githubImage.png)
 
 ## 🤨 Why?
-Opening Reminders or talking to Siri is too distracting if i am in deep work but sometimes a tought comes to my head that i wanto to think about later in the day. So I built this utility that is always available in the menu bar. 
-- Add Reminder and notes fast;
+Opening Reminders or talking to Siri can be distracting during deep work. Sometimes you just want to capture a thought for later without breaking your focus. So I built this utility that is always available in the menu bar. 
+- Quickly add reminders and notes;
 - Use natural language;
-- Immediatelly see what reminders you have set a notification for.
+- Immediately see what reminders you have set a notification for.
 
 ## 📦 Installation (Homebrew)
 You can install this easily using Homebrew as a cask.
@@ -22,11 +22,12 @@ brew install remindy
 ### 3. Updating
 To update just use 
 ``` bash
-brew update && brew upgrade quicknetstats
+brew update && brew upgrade remindy
 ```
 
 ## 🛠️ Build from Source
 Can clone this repo, open the project in Xcode and build the app from scratch. If you considered this route you probably don't need more instruction!
+
 
 ## 💡 Features & Usage
 Opening the app displays a bell icon in the menu bar. By holding `cmd` you can use the mouse to drag the app to your preferred position in the menu bar. 
@@ -36,12 +37,12 @@ Opening the app displays a bell icon in the menu bar. By holding `cmd` you can u
 
 ### Main View
 You are presented with a textbox to write notes and reminders and under it a list of reminders. By clicking on the bell you can toggle the notification on or off
-for this reminder. The reminders with a bell on the right can be reminded. 
+for this item. Reminders with the bell icon on the right can be used to trigger notification at the specified time. 
 
 ### Notification Status
-When the bell and the date are not colored then there is no notification
+When the bell and the date are not colored then there is no notification for the corresponding item
 
-![Remindable Reminder](https://github.com/user-attachments/assets/3ba83ad2-89be-4e77-86cf-b612d5ee5a2a)
+![Remindable Reminder](https.com/user-attachments/assets/3ba83ad2-89be-4e77-86cf-b612d5ee5a2a)
 
 Otherwise a notification will be delivered at the specified time
 
@@ -69,7 +70,7 @@ Here is a description of accepted natural-language times to set a reminder
 To clear a reminder you can tap on the circle on the left of the title.
 
 ### Settings
-From the settings screen you can customize the appearence of the app and clear all the reminders.
+From the settings screen you can customize the appearance of the app and clear all the reminders.
 
 ![Settings View](https://github.com/user-attachments/assets/2ef58efe-47f3-4774-a424-283b386d20ac)
 
