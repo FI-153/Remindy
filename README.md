@@ -1,4 +1,5 @@
-# Remindy
+# <img src='githubAssets/icon.png' width='65' align='center' alt='icon'> Remindy
+
 A fast and minimalist reminder app that interprets what you want, directly in the Menu Bar
 
 ![153](https://github.com/FI-153/Remindy/blob/f4f0ada0f5525ea54d3123fd1db1de24f41428fd/githubAssets/githubImage.png)
