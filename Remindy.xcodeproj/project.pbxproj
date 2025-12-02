@@ -26,6 +26,7 @@
 		A190E38C2854CF8C0044AAF3 /* Remindy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A190E38A2854CF8C0044AAF3 /* Remindy.xcdatamodeld */; };
 		A1A347A328551E4C006F409E /* RegexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A347A228551E4C006F409E /* RegexManager.swift */; };
 		A1A347A528551FD9006F409E /* RegexManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A347A428551FD9006F409E /* RegexManagerTests.swift */; };
+		C0F34C672EDDA12A00AB8D10 /* remindy.icon in Resources */ = {isa = PBXBuildFile; fileRef = C0F34C662EDDA12A00AB8D10 /* remindy.icon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		A190E38B2854CF8C0044AAF3 /* Remindy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remindy.xcdatamodel; sourceTree = "<group>"; };
 		A1A347A228551E4C006F409E /* RegexManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexManager.swift; sourceTree = "<group>"; };
 		A1A347A428551FD9006F409E /* RegexManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexManagerTests.swift; sourceTree = "<group>"; };
+		C0F34C662EDDA12A00AB8D10 /* remindy.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = remindy.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		A190E33D2854CE0A0044AAF3 /* Remindy */ = {
 			isa = PBXGroup;
 			children = (
+				C0F34C662EDDA12A00AB8D10 /* remindy.icon */,
 				A190E33E2854CE0A0044AAF3 /* RemindyApp.swift */,
 				A190E3692854CE5C0044AAF3 /* Screens */,
 				A190E36A2854CE670044AAF3 /* Managers */,
@@ -275,6 +278,7 @@
 			files = (
 				A190E3462854CE0B0044AAF3 /* Preview Assets.xcassets in Resources */,
 				A190E3432854CE0B0044AAF3 /* Assets.xcassets in Resources */,
+				C0F34C672EDDA12A00AB8D10 /* remindy.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +450,7 @@
 		A190E3612854CE0C0044AAF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = remindy;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Remindy/Remindy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -458,13 +462,16 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Remindy/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Remindy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = federicoimberti.Remindy;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = federicoimberti.remindy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -474,7 +481,7 @@
 		A190E3622854CE0C0044AAF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = remindy;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Remindy/Remindy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -486,13 +493,16 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Remindy/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Remindy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = federicoimberti.Remindy;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = federicoimberti.remindy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
